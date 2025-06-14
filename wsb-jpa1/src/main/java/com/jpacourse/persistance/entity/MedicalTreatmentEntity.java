@@ -42,4 +42,11 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
+	// Relacja @ManyToOne jednokierunkowa (od strony dziecka)
+	@ManyToOne
+	@JoinColumn(name = "visit_id")
+	private VisitEntity visit;
+
+	public VisitEntity getVisit() {return visit;}
+	public void setVisit(VisitEntity visit) {this.visit = visit;}
 }

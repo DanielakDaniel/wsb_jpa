@@ -4,6 +4,9 @@ import com.jpacourse.persistance.enums.Specialization;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Table(name = "DOCTOR")
 public class DoctorEntity {
@@ -85,5 +88,20 @@ public class DoctorEntity {
 	public void setSpecialization(Specialization specialization) {
 		this.specialization = specialization;
 	}
+
+	// Relacja @ManyToMany dwukierunkowa
+	@ManyToMany()
+	@JoinTable(name = "doctor_to_address", joinColumns = @JoinColumn(name = "doctor_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+	private List<AddressEntity> addresses;
+
+	// Relacja @OneToMany dwukierunkowa
+	@OneToMany(mappedBy = "doctor", orphanRemoval = true)
+	private List<VisitEntity> visits;
+
+	public List<AddressEntity> getAddresses() {return addresses;}
+	public void setAddresses(List<AddressEntity> addresses) {this.addresses = addresses;}
+
+	public List<VisitEntity> getVisits() {return visits;}
+	public void setVisits(List<VisitEntity> visits) {this.visits = visits;}
 
 }

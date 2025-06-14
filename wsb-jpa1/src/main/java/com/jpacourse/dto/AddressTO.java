@@ -1,6 +1,7 @@
 package com.jpacourse.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AddressTO implements Serializable
 {
@@ -53,4 +54,14 @@ public class AddressTO implements Serializable
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
+    private List<PatientTO> patients;
+    private List<DoctorTO> doctors;
+
+    public List<PatientTO> getPatients() {return patients;}
+    public void setPatients(List<PatientTO> patients) {this.patients = patients;}
+
+    public List<DoctorTO> getDoctors() {return doctors;}
+    public void setDoctors(List<DoctorTO> doctors) {this.doctors = doctors;}
+
 }

@@ -3,6 +3,8 @@ package com.jpacourse.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ADDRESS")
 public class AddressEntity {
@@ -58,5 +60,19 @@ public class AddressEntity {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
+
+	// Relacja @ManyToMany dwukierunkowa
+	@ManyToMany(mappedBy = "addresses")
+	private List<PatientEntity> patients;
+
+	// Relacja @ManyToMany dwukierunkowa
+	@ManyToMany(mappedBy = "addresses")
+	private List<DoctorEntity> doctors;
+
+	public List<PatientEntity> getPatients() {return patients;}
+	public void setPatients(List<PatientEntity> patients) {this.patients = patients;}
+
+	public List<DoctorEntity> getDoctors() {return doctors;}
+	public void setDoctors(List<DoctorEntity> doctors) {this.doctors = doctors;}
 
 }

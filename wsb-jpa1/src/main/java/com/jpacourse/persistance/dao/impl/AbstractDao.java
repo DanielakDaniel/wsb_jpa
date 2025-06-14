@@ -2,6 +2,7 @@ package com.jpacourse.persistance.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -89,4 +90,6 @@ public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K
 	protected String getDomainClassName() {
 		return getDomainClass().getName();
 	}
+
+	public abstract void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description);
 }

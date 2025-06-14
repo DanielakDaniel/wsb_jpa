@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -40,5 +41,21 @@ public class VisitEntity {
 	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
+
+	// Relacja @ManyToOne dwukierunkowa
+	@ManyToOne
+	@JoinColumn(name = "patient_id")
+	private PatientEntity patient;
+
+	// Relacja @ManyToOne dwukierunkowa
+	@ManyToOne
+	@JoinColumn(name = "doctor_id")
+	private DoctorEntity doctor;
+
+	public PatientEntity getPatient() {return patient;}
+	public void setPatient(PatientEntity patient) {this.patient = patient;}
+
+	public DoctorEntity getDoctor() {return doctor;}
+	public void setDoctor(DoctorEntity doctor) {this.doctor = doctor;}
 
 }
