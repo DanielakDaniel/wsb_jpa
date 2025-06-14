@@ -3,7 +3,6 @@ package com.jpacourse.persistance.dao;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.service.impl.PatientServiceImpl;
 import jakarta.transaction.Transactional;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,13 +17,12 @@ public class PatientDaoTest {
 
     @Autowired
     private PatientDao patientDao;
-    @Autowired
-    private PatientServiceImpl patientServiceImpl;
 
     @Transactional
     @Test
     public void testShouldFindPatientsByLastName() {
         // given
+        /*
         PatientEntity patientEntity1 = new PatientEntity();
         patientEntity1.setFirstName("Jan");
         patientEntity1.setLastName("Kowalski");
@@ -42,15 +40,22 @@ public class PatientDaoTest {
         patientEntity2.setPatientNumber("P3");
         patientEntity2.setDateOfBirth(LocalDate.of(2002, 02,02));
         patientDao.save(patientEntity2);
+        */
 
         // when
         List<PatientEntity> entityList = patientDao.findAll();
-        List<PatientEntity> entity = patientDao.findByLastName("Kowalski");
+        List<PatientEntity> entity = patientDao.findByLastName("Di");
 
         // then
         assertThat(entityList).isNotNull();
         assertThat(entity).isNotNull();
-        assertThat(entity.stream().allMatch(p -> "Kowalski".equals(p.getLastName()))).isTrue();
+        assertThat(entity.stream().allMatch(p -> "Di".equals(p.getLastName()))).isTrue();
     }
+    /*
+    @Transactional
+    @Test
+    public void testShouldAddVisitToPatient() {
 
+    }
+    */
 }

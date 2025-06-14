@@ -91,5 +91,4 @@ public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K
 		return getDomainClass().getName();
 	}
 
-	public abstract void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description);
 }

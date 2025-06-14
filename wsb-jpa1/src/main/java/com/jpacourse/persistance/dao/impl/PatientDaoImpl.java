@@ -3,6 +3,7 @@ package com.jpacourse.persistance.dao.impl;
 import com.jpacourse.persistance.dao.PatientDao;
 import com.jpacourse.persistance.entity.DoctorEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
+import com.jpacourse.persistance.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -24,8 +25,9 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
     }
 
     @Override
-    public void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description) {
-        PatientEntity patientEntity = new PatientEntity();
-        DoctorEntity doctorEntity = new DoctorEntity();
+    public VisitEntity addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description) {
+        return null;
     }
+
+
 }
