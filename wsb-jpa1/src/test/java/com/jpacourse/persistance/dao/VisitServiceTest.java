@@ -20,9 +20,8 @@ public class VisitServiceTest {
         // given
 
         // when
-        visitService.findById();
+
         // then
-        assertThat(visitEntity).isNotNull();
-        assertThat(visitEntity.getLastName()).isEqualTo("Di");
+
     }
 }

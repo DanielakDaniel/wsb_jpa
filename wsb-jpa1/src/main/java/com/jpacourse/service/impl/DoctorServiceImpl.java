@@ -25,4 +25,11 @@ public class DoctorServiceImpl implements DoctorService {
         final DoctorEntity entity = doctorDao.findOne(id);
         return DoctorMapper.mapToTO(entity);
     }
+
+    @Override
+    public DoctorTO addDoctor(DoctorTO doctorTO) {
+        final DoctorEntity entity = doctorDao.save(DoctorMapper.mapToEntity(doctorTO));
+        return DoctorMapper.mapToTO(entity);
+    }
+
 }

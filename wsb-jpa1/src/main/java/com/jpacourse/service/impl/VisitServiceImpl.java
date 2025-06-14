@@ -1,11 +1,8 @@
 package com.jpacourse.service.impl;
 
-import com.jpacourse.dto.PatientTO;
 import com.jpacourse.dto.VisitTO;
-import com.jpacourse.mapper.PatientMapper;
 import com.jpacourse.mapper.VisitMapper;
 import com.jpacourse.persistance.dao.VisitDao;
-import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import com.jpacourse.service.VisitService;
 import jakarta.transaction.Transactional;
@@ -29,4 +26,9 @@ public class VisitServiceImpl implements VisitService {
         return VisitMapper.mapToTO(entity);
     }
 
+    @Override
+    public VisitTO addVisit(VisitTO visitTO) {
+        final VisitEntity entity = VisitMapper.mapToEntity(visitTO);
+        return VisitMapper.mapToTO(entity);
+    }
 }

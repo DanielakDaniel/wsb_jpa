@@ -5,5 +5,5 @@ import com.jpacourse.dto.VisitTO;
 public interface VisitService {
 
     VisitTO findById(final Long id);
-
+    VisitTO addVisit(VisitTO visitTO);
 }

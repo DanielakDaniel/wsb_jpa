@@ -1,8 +1,6 @@
 package com.jpacourse.mapper;
 
-import com.jpacourse.dto.PatientTO;
 import com.jpacourse.dto.VisitTO;
-import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 
 public final class VisitMapper {
@@ -17,6 +15,8 @@ public final class VisitMapper {
         visitTO.setId(visitTO.getId());
         visitTO.setDescription(visitTO.getDescription());
         visitTO.setTime(visitTO.getTime());
+        visitTO.setDoctors(visitTO.getDoctors());
+        visitTO.setPatients(visitTO.getPatients());
         return visitTO;
     }
 
@@ -30,6 +30,8 @@ public final class VisitMapper {
         visitEntity.setId(visitEntity.getId());
         visitEntity.setDescription(visitEntity.getDescription());
         visitEntity.setTime(visitEntity.getTime());
+        visitEntity.setDoctor(visitEntity.getDoctor());
+        visitEntity.setPatient(visitEntity.getPatient());
         return visitEntity;
     }
 }

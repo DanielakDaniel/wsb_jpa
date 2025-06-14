@@ -20,10 +20,14 @@ public class VisitTO implements Serializable {
     public void setTime(LocalDateTime time) {this.time = time;}
 
     private List<DoctorTO> doctors;
+    private List<PatientTO> patients;
     private List<MedicalTreatmentTO> medicalTreatments;
 
     public List<DoctorTO> getDoctors() {return doctors;}
     public void setDoctors(List<DoctorTO> doctors) {this.doctors = doctors;}
+
+    public List<PatientTO> getPatients() {return patients;}
+    public void setPatients(List<PatientTO> patients) {this.patients = patients;}
 
     public List<MedicalTreatmentTO> getMedicalTreatments() {return medicalTreatments;}
     public void setMedicalTreatments(List<MedicalTreatmentTO> medicalTreatments) {this.medicalTreatments = medicalTreatments;}
