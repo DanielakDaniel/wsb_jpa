@@ -9,6 +9,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class VisitServiceImpl implements VisitService {
@@ -29,6 +32,16 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public VisitTO addVisit(VisitTO visitTO) {
         final VisitEntity entity = VisitMapper.mapToEntity(visitTO);
-        return VisitMapper.mapToTO(entity);
+        final VisitEntity newEntity = visitDao.save(entity);
+        return VisitMapper.mapToTO(newEntity);
+    }
+
+    @Override
+    public List<VisitTO> findAllVisitsByPatientId(final Long patientId) {
+        final List<VisitEntity> entity = visitDao.findAllPatientsById(patientId);
+        return entity.stream()
+                .map(VisitMapper::mapToTO)
+                .collect(Collectors.toList());
+
     }
 }

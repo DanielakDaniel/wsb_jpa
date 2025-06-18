@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -94,14 +95,14 @@ public class PatientEntity {
 	private List<AddressEntity> addresses;
 
 	// Relacja @OneToMany dwukierunkowa
-	@Fetch(FetchMode.SELECT)
-	@OneToMany(mappedBy = "patient", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<VisitEntity> visits;
+	// @Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE, orphanRemoval = true/*, fetch = FetchType.EAGER */)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 	public List<AddressEntity> getAddresses() {return addresses;}
 	public void setAddresses(List<AddressEntity> addresses) {this.addresses = addresses;}
 
-	public List<VisitEntity> getPatients() {return visits;}
-	public void setPatients(List<VisitEntity> patients) {this.visits = visits;}
+	public List<VisitEntity> getVisits() {return visits;}
+	public void setVisits(List<VisitEntity> visits) {this.visits = visits;}
 
 }

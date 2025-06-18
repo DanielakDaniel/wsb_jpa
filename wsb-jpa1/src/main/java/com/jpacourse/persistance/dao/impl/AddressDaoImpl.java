@@ -8,12 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 
 @Repository
-public class AddressDaoImpl extends AbstractDao<AddressEntity, Long> implements AddressDao
-{
+public class AddressDaoImpl extends AbstractDao<AddressEntity, Long> implements AddressDao {
 
-    @Override
-    public VisitEntity addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description) {
-
-        return null;
-    }
 }

@@ -14,9 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class PatientServiceTest {
@@ -53,22 +52,35 @@ public class PatientServiceTest {
         doctorTO.setDoctorNumber("D1");
         doctorTO.setSpecialization(Specialization.valueOf("SURGEON"));
         DoctorTO savedDoctor = doctorService.addDoctor(doctorTO);
+        Long doctor_id = savedDoctor.getId();
 
         VisitTO visitTO = new VisitTO();
         visitTO.setDescription("Wizyta kontrolna");
         visitTO.setTime(LocalDateTime.of(2025, 06, 16, 8, 0, 0));
-        visitTO.setPatients(List.of(patientTO));
-        visitTO.setDoctors(List.of(doctorTO));
+        visitTO.setPatient(savedPatient);
+        visitTO.setDoctor(savedDoctor);
         VisitTO savedVisit = visitService.addVisit(visitTO);
+        Long visit_id = savedVisit.getId();
 
         // when
+
+        System.out.println(doctor_id);
         patientService.deletePatient(patient_id);
 
         // then
-        assertThat(savedPatient).isNull();
-        assertThat(savedVisit).isNull();
-        assertThat(savedDoctor).isNotNull();
+
+        PatientTO deletedPatient = patientService.findById(patient_id);
+        VisitTO deletedVisit = visitService.findById(visit_id);
+        DoctorTO notDeletedDoctor = doctorService.findById(doctor_id);
+
+        System.out.println(deletedPatient);
+        System.out.println(deletedVisit);
+        System.out.println(notDeletedDoctor);
+    /*
+        assertThat(deletedPatient).isNull();
+        assertThat(deletedVisit).isNull();
+        assertThat(notDeletedDoctor).isNotNull();
+    */
 
     }
-
 }

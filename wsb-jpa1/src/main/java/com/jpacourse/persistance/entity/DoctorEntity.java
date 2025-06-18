@@ -4,6 +4,7 @@ import com.jpacourse.persistance.enums.Specialization;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -95,8 +96,8 @@ public class DoctorEntity {
 	private List<AddressEntity> addresses;
 
 	// Relacja @OneToMany dwukierunkowa
-	@OneToMany(mappedBy = "doctor", orphanRemoval = true)
-	private List<VisitEntity> visits;
+	@OneToMany(mappedBy = "doctor", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 	public List<AddressEntity> getAddresses() {return addresses;}
 	public void setAddresses(List<AddressEntity> addresses) {this.addresses = addresses;}

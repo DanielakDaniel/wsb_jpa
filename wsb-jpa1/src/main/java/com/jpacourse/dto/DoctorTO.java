@@ -3,6 +3,8 @@ package com.jpacourse.dto;
 import com.jpacourse.persistance.enums.Specialization;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorTO implements Serializable {
 
@@ -34,5 +36,14 @@ public class DoctorTO implements Serializable {
 
     public Specialization getSpecialization() {return specialization;}
     public void setSpecialization(Specialization specialization) {this.specialization = specialization;}
+
+    private List<AddressTO> addresses;
+    private List<VisitTO> visits = new ArrayList<>();
+
+    public List<AddressTO> getAddresses() {return addresses;}
+    public void setAddresses(List<AddressTO> addresses) {this.addresses = addresses;}
+
+    public List<VisitTO> getVisits() {return visits;}
+    public void setVisits(List<VisitTO> visits) {this.visits = visits;}
 
 }

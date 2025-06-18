@@ -1,11 +1,12 @@
 package com.jpacourse.mapper;
 
-import com.jpacourse.dto.AddressTO;
 import com.jpacourse.dto.PatientTO;
-import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
+import com.jpacourse.persistance.entity.VisitEntity;
 
 public final class PatientMapper {
+
+    private static VisitEntity visitEntity;
 
     public static PatientTO mapToTO(final PatientEntity patientEntity) {
 

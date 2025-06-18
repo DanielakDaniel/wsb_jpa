@@ -4,14 +4,20 @@ import com.jpacourse.persistance.dao.VisitDao;
 import com.jpacourse.persistance.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public class VisitDaoImpl extends AbstractDao<VisitEntity, Long> implements VisitDao {
 
     @Override
-    public void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description) {
+    public VisitEntity findById(Long id) {
+        return null;
+    }
 
+    @Override
+    public List<VisitEntity> findAllPatientsById(Long patientId) {
+        return entityManager.createQuery("select v from VisitEntity v where v.patient.id = :patientId", VisitEntity.class)
+                .setParameter("patientId", patientId)
+                .getResultList();
     }
 }
-
